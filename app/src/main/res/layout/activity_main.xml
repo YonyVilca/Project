@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Aquí está el FrameLayout que contendrá tus fragmentos o contenido -->
+    <!-- Aquí está el FrameLayout que contendrá los fragmentos y contenido -->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
