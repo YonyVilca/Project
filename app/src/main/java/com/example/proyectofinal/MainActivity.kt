@@ -1,20 +1,48 @@
-package com.example.proyectofinal
+package com.example.proyectofinal;
+
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottomnav)
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navHome -> {
+                    loadFragment(homeFragment())
+                    true
+                }
+                R.id.navShop -> {
+                    loadFragment(ShopFragment())
+                    true
+                }
+                R.id.navShopping -> {
+                    loadFragment(ShoppingFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+        // Load the default fragment
+        loadFragment(homeFragment())
+    }
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.container, fragment)
+            addToBackStack(null)
+            commit()
         }
     }
 }
