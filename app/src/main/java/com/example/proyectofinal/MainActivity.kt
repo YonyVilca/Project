@@ -3,53 +3,51 @@ package com.example.proyectofinal;
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Inicializa el BottomNavigationView
-        val bottomNav: BottomNavigationView = findViewById(R.id.bottomnav)
-        // Establece el listener para la selección de elementos en el BottomNavigationView
+
+        // Configurar Navigation Component
+        // Busca el fragmento del host de navegación en el layout y obtiene el NavController
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        // Configurar BottomNavigationView para la navegación entre fragmentos
+        // Encuentra el BottomNavigationView por su ID
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomnav)
+        // Establece un listener para los elementos seleccionados en el BottomNavigationView
         bottomNav.setOnItemSelectedListener { item ->
+            // Usa un when para manejar la navegación basada en el ID del ítem seleccionado
             when (item.itemId) {
                 R.id.navHome -> {
-                    // Carga el HomeFragment cuando se selecciona el elemento Home en el menú
-                    loadFragment(homeFragment())
+                    // Navega al fragmento del inicio
+                    navController.navigate(R.id.homeFragment)
                     true
                 }
                 R.id.navShop -> {
-                    // Carga el ShopFragment cuando se selecciona el elemento Shop en el menú
-                    loadFragment(ShopFragment())
+                    // Navega al fragmento de la tienda
+                    navController.navigate(R.id.shopFragment)
                     true
                 }
                 R.id.navShopping -> {
-                    // Carga el ShoppingFragment cuando se selecciona el elemento Shopping en el menú
-                    loadFragment(ShoppingFragment())
+                    // Navega al fragmento del carrito de compras
+                    navController.navigate(R.id.shoppingFragment)
                     true
                 }
                 else -> false
             }
         }
-
-
-        // Carga el fragmento predeterminado al iniciar la actividad
-        loadFragment(homeFragment())
     }
-    // Función privada para cargar un fragmento en el contenedor principal
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            // Reemplaza el contenido del contenedor con el fragmento proporcionado
-            replace(R.id.container, fragment)
-            // Agrega el fragmento actual a la pila de retroceso
-            addToBackStack(null)
-            // Confirma la transacción
-            commit()
-        }
+    // Sobrescribe el método onSupportNavigateUp para manejar la navegación hacia arriba
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

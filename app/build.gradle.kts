@@ -55,7 +55,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
-
+    dependencies{
+        implementation("androidx.core:core-splashscreen:1.0.1")
+    }
 
     dependencies {
         implementation("com.tbuonomo:dotsindicator:5.0")
