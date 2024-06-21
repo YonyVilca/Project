@@ -7,4 +7,6 @@
     <string name="categorias">Categorias</string>
     <string name="ver_todos">ver todos</string>
     <string name="lo_mas_visto">Lo mas visto</string>
+    <string name="moneda">S/.</string>
+    <string name="nombre_producto">Nombre</string>
 </resources>
