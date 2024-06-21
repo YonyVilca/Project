@@ -6,7 +6,7 @@
     android:layout_height="215dp">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgs"
         android:layout_width="164dp"
         android:layout_height="164dp"
         android:background="@drawable/grey"
@@ -25,10 +25,10 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgs" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/texts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:singleLine="true"

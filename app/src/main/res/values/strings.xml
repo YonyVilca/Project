@@ -9,4 +9,7 @@
     <string name="lo_mas_visto">Lo mas visto</string>
     <string name="moneda">S/.</string>
     <string name="nombre_producto">Nombre</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="correo">CORREO</string>
+    <string name="contrase_a">CONTRASEÑA</string>
 </resources>
