@@ -16,6 +16,7 @@ MEGAFARMA es una aplicación móvil para Android que permite a los clientes de l
 - **Herramientas de desarrollo**: Git, GitHub, Android SDK
 ## Capturas
 <p align="center"> <img src="https://github.com/YonyVilca/Practica/blob/main/2024-06-21_172921.png" alt="Megafarma App" width="200"> </p>
+
 ## Autores
 - **Diego Johann Humpiri Vargas
 - **Yony Alex Vilca Mamani
